@@ -2,6 +2,7 @@ import _ from 'lodash'
 import React, { Component } from "react"
 import { connect } from 'react-redux'
 import { keywordsList } from '../actions'
+import { Link } from 'react-router-dom'
 
 
 class KeywordsList extends Component {
@@ -14,8 +15,14 @@ class KeywordsList extends Component {
         return _.map(this.props.keywords, keyword => {
             return (
                 <tr key={keyword._id}>
-                    <td>{keyword.name}</td>
+                    <td><Link to={`/keyword/show/${keyword.name}`}>{keyword.name}</Link></td>
                     <td>{keyword.password}</td>
+                    <td>
+                        <div className="btn-group" role="group">
+                          <Link className="btn btn-secondary btn-sm" role="button" to="/edit/0">edit</Link>
+                          <Link className="btn btn-info btn-sm" role="button" to="/remove/0">delete</Link>
+                        </div>
+                    </td>
                 </tr>
             )
         })
@@ -28,6 +35,7 @@ class KeywordsList extends Component {
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Password</th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
