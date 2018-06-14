@@ -1,8 +1,24 @@
+import _ from 'lodash'
 import React, { Component } from "react"
+import { connect } from 'react-redux'
+import { keywordsList } from '../actions'
 
-export default class KeywordsList extends Component {
-    constructor(props) {
-        super(props)
+
+class KeywordsList extends Component {
+
+    componentDidMount() {
+        this.props.keywordsList()
+    }
+
+    renderKeyword() {
+        return _.map(this.props.keywords, keyword => {
+            return (
+                <tr key={keyword._id}>
+                    <td>{keyword.name}</td>
+                    <td>{keyword.password}</td>
+                </tr>
+            )
+        })
     }
 
     render() {
@@ -10,32 +26,20 @@ export default class KeywordsList extends Component {
             <table className="table table-hover">
                 <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Password</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td colSpan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                </tr>
+                    {this.renderKeyword()}
                 </tbody>
             </table>
         )
     }
 }
+
+function mapStateToProps({ keywords }) {
+    return { keywords }
+}
+
+export default connect(mapStateToProps, { keywordsList })(KeywordsList)

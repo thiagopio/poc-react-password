@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import ReduxPromise from 'redux-promise'
 
 import reducers from './reducers';
 import MenuBar from './components/menu-bar';
 import KeywordsIndex from './containers/keywords-index';
 import KeywordNew from './containers/keyword-new';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
