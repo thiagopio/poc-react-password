@@ -15,12 +15,12 @@ class KeywordsList extends Component {
         return _.map(this.props.keywords, keyword => {
             return (
                 <tr key={keyword._id}>
-                    <td><Link to={`/keyword/show/${keyword.name}`}>{keyword.name}</Link></td>
+                    <td><Link to={`/keywords/show/${keyword._id}`}>{keyword.name}</Link></td>
                     <td>{keyword.password}</td>
                     <td>
                         <div className="btn-group" role="group">
-                          <Link className="btn btn-secondary btn-sm" role="button" to="/edit/0">edit</Link>
-                          <Link className="btn btn-info btn-sm" role="button" to="/remove/0">delete</Link>
+                          <Link className="btn btn-secondary btn-sm" role="button" to={`/edit/${keyword._id}`}>edit</Link>
+                          <Link className="btn btn-info btn-sm" role="button" to={`/delete/${keyword._id}`}>delete</Link>
                         </div>
                     </td>
                 </tr>
