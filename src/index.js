@@ -10,6 +10,7 @@ import MenuBar from './components/menu-bar';
 import KeywordsIndex from './containers/keywords-index';
 import KeywordNew from './containers/keyword-new';
 import keywordShow from './containers/keyword-show';
+import keywordEdit from './containers/keyword-edit';
 
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
@@ -22,8 +23,9 @@ ReactDOM.render(
         <div className="container">
           <Switch>
             <Route exact path="/" component={KeywordsIndex} />
-            <Route path="/keywords/new" component={KeywordNew} />
-            <Route path="/keywords/show/:id" component={keywordShow} />
+            <Route path="/keyword/new" component={KeywordNew} />
+            <Route path="/keyword/edit/:id" component={keywordEdit} />
+            <Route path="/keyword/show/:id" component={keywordShow} />
             <Route path='*' component={KeywordsIndex} />
           </Switch>
         </div>

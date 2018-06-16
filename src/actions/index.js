@@ -1,11 +1,12 @@
 import axios from 'axios'
 
-const URL = 'http://localhost:5000'
+const URL = 'http://192.168.1.101:5000'
 
 export const KEYWORDS_LIST = 'KEYWORDS_LIST'
 export const KEYWORD_CREATE = 'KEYWORD_CREATE'
 export const KEYWORD_FIND_ONE = 'KEYWORD_FIND_ONE'
 export const KEYWORD_DELETE = 'KEYWORD_DELETE'
+export const KEYWORD_UPDATE = 'KEYWORD_UPDATE'
 
 export function keywordsList() {
     const url = `${URL}/list`
@@ -38,7 +39,16 @@ export function keywordDeleteByID(id, callback) {
     const url = `${URL}/rem/${id}`
     const request = axios.delete(url).then(() => callback())
     return {
-        action: KEYWORD_DELETE,
+        type: KEYWORD_DELETE,
+        payload: request
+    }
+}
+
+export function keywordUpdate(values, callback) {
+    const url = `${URL}/update`
+    const request = axios.put(url, values).then(() => callback())
+    return {
+        type: KEYWORD_UPDATE,
         payload: request
     }
 }

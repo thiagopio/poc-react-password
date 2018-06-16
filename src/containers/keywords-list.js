@@ -11,21 +11,24 @@ class KeywordsList extends Component {
         this.props.keywordsList()
     }
 
-    onClickDelete() {
-        console.log('----', this)
-        // this.props.keywordDeleteByID(id)
+    onClickDelete(id) {
+        if (confirm("Are you right?")) {
+            this.props.keywordDeleteByID(id, () => {
+                this.props.keywordsList()
+            })
+        }
     }
 
     renderKeyword() {
         return _.map(this.props.keywords, keyword => {
             return (
                 <tr key={keyword._id}>
-                    <td><Link to={`/keywords/show/${keyword._id}`}>{keyword.name}</Link></td>
+                    <td><Link to={`/keyword/show/${keyword._id}`}>{keyword.name}</Link></td>
                     <td>{keyword.password}</td>
                     <td>
                         <div className="btn-group" role="group">
-                          <Link className="btn btn-secondary btn-sm" role="button" to={`/edit/${keyword._id}`}>edit</Link>
-                          <button className="btn btn-info btn-sm" onClick={this.onClickDelete.bind(this)}>delete</button>
+                          <Link className="btn btn-info btn-sm" role="button" to={`/keyword/edit/${keyword._id}`}>edit</Link>
+                          <button className="btn btn-danger btn-sm" onClick={this.onClickDelete.bind(this, keyword._id)}>delete</button>
                         </div>
                     </td>
                 </tr>
@@ -37,7 +40,7 @@ class KeywordsList extends Component {
         return (
             <table className="table table-hover">
                 <thead>
-                <tr>
+                <tr key="head">
                     <th scope="col">Name</th>
                     <th scope="col">Password</th>
                     <th scope="col"></th>

@@ -6,7 +6,7 @@ const MenuBar = () => {
         <nav className="site-header sticky-top py-1" style={{backgroundColor: ""}}>
             <div className="container d-flex flex-column flex-md-row justify-content-between">
                 <Link to="/" className="py-2 d-none d-md-inline-block">Home</Link>                
-                <Link to="/keywords/new" className="py-2 d-none d-md-inline-block">Add Password</Link>                
+                <Link to="/keyword/new" className="py-2 d-none d-md-inline-block">Add Password</Link>
             </div>
         </nav>
     )
