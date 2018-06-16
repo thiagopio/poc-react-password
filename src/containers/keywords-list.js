@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import React, { Component } from "react"
 import { connect } from 'react-redux'
-import { keywordsList } from '../actions'
+import { keywordsList, keywordDeleteByID } from '../actions'
 import { Link } from 'react-router-dom'
 
 
@@ -9,6 +9,11 @@ class KeywordsList extends Component {
 
     componentDidMount() {
         this.props.keywordsList()
+    }
+
+    onClickDelete() {
+        console.log('----', this)
+        // this.props.keywordDeleteByID(id)
     }
 
     renderKeyword() {
@@ -20,7 +25,7 @@ class KeywordsList extends Component {
                     <td>
                         <div className="btn-group" role="group">
                           <Link className="btn btn-secondary btn-sm" role="button" to={`/edit/${keyword._id}`}>edit</Link>
-                          <Link className="btn btn-info btn-sm" role="button" to={`/delete/${keyword._id}`}>delete</Link>
+                          <button className="btn btn-info btn-sm" onClick={this.onClickDelete.bind(this)}>delete</button>
                         </div>
                     </td>
                 </tr>
@@ -50,4 +55,4 @@ function mapStateToProps({ keywords }) {
     return { keywords }
 }
 
-export default connect(mapStateToProps, { keywordsList })(KeywordsList)
+export default connect(mapStateToProps, { keywordsList, keywordDeleteByID })(KeywordsList)

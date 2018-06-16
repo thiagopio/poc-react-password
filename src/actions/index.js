@@ -5,6 +5,7 @@ const URL = 'http://localhost:5000'
 export const KEYWORDS_LIST = 'KEYWORDS_LIST'
 export const KEYWORD_CREATE = 'KEYWORD_CREATE'
 export const KEYWORD_FIND_ONE = 'KEYWORD_FIND_ONE'
+export const KEYWORD_DELETE = 'KEYWORD_DELETE'
 
 export function keywordsList() {
     const url = `${URL}/list`
@@ -29,6 +30,15 @@ export function keywordFindByID(id) {
     const request = axios.get(url)
     return {
         type: KEYWORD_FIND_ONE,
+        payload: request
+    }
+}
+
+export function keywordDeleteByID(id, callback) {
+    const url = `${URL}/rem/${id}`
+    const request = axios.delete(url).then(() => callback())
+    return {
+        action: KEYWORD_DELETE,
         payload: request
     }
 }
