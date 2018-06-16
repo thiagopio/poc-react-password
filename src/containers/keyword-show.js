@@ -12,15 +12,15 @@ class KeywordShow extends Component {
     render() {
         return (
             <div>
-                <div>{this.props.keywords.name}</div>
-                <div>{this.props.keywords.password}</div>
+                <div>{this.props.keyword.name}</div>
+                <div>{this.props.keyword.password}</div>
             </div>
         )
     }
 }
 
 function mapStateToProps( { keywords }) {
-    return { keywords }
+    return { keyword: keywords }
 }
 
 export default connect(mapStateToProps, { keywordFindByID })(KeywordShow)

@@ -19,7 +19,7 @@ class KeywordsList extends Component {
         }
     }
 
-    renderKeyword() {
+    renderKeywords() {
         return _.map(this.props.keywords, keyword => {
             return (
                 <tr key={keyword._id}>
@@ -37,17 +37,21 @@ class KeywordsList extends Component {
     }
 
     render() {
+        if (!_.isArray(this.props.keywords)){
+            return <div>loading...</div>
+        }
+
         return (
             <table className="table table-hover">
                 <thead>
-                <tr key="head">
+                <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Password</th>
                     <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
-                    {this.renderKeyword()}
+                    {this.renderKeywords()}
                 </tbody>
             </table>
         )
