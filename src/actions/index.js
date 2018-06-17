@@ -7,6 +7,7 @@ export const KEYWORD_CREATE = 'KEYWORD_CREATE'
 export const KEYWORD_FIND_ONE = 'KEYWORD_FIND_ONE'
 export const KEYWORD_DELETE = 'KEYWORD_DELETE'
 export const KEYWORD_UPDATE = 'KEYWORD_UPDATE'
+export const KEYWORDS_BY_NAME = 'KEYWORDS_BY_NAME'
 
 export function keywordsList() {
     const url = `${URL}/list`
@@ -49,6 +50,15 @@ export function keywordUpdate(values, callback) {
     const request = axios.put(url, values).then(() => callback())
     return {
         type: KEYWORD_UPDATE,
+        payload: request
+    }
+}
+
+export function keywordFindByName(name) {
+    const url = `${URL}/search/${name}`
+    const request = axios.get(url)
+    return {
+        type: KEYWORDS_BY_NAME,
         payload: request
     }
 }
