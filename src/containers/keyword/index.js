@@ -1,6 +1,6 @@
 import React from 'react'
-import KeywordsList from './keywords-list'
-import KeywordSearch from './keyword-search'
+import KeywordsList from './list'
+import KeywordSearch from './search'
 
 const KeywordsIndex = () => {
     return (

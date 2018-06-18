@@ -7,10 +7,10 @@ import ReduxPromise from 'redux-promise'
 
 import reducers from './reducers';
 import MenuBar from './components/menu-bar';
-import KeywordsIndex from './containers/keywords-index';
-import KeywordNew from './containers/keyword-new';
-import keywordShow from './containers/keyword-show';
-import keywordEdit from './containers/keyword-edit';
+import KeywordsIndex from './containers/keyword/index';
+import KeywordNew from './containers/keyword/new';
+import keywordShow from './containers/keyword/show';
+import keywordEdit from './containers/keyword/edit';
 
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);

@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { keywordFindByName, keywordsList } from "../actions"
+import { keywordFindByName, keywordsList } from "../../actions"
 
 class KeywordSearch extends Component {
     constructor(props) {

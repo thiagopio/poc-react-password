@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { keywordCreate } from '../actions'
+import { keywordCreate } from '../../actions'
 
 class KeywordNew extends Component {
     RenderField(field) {

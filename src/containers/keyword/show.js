@@ -1,6 +1,6 @@
 import React, {Component } from 'react'
 import { connect } from 'react-redux'
-import { keywordFindByID } from '../actions'
+import { keywordFindByID } from '../../actions'
 
 class KeywordShow extends Component {
 
@@ -12,8 +12,8 @@ class KeywordShow extends Component {
     render() {
         return (
             <div>
-                <div>{this.props.keyword.name}</div>
-                <div>{this.props.keyword.password}</div>
+                <h1 className="display-4">{this.props.keyword.name}</h1>
+                <h1 className="display-4">{this.props.keyword.password}</h1>
             </div>
         )
     }
