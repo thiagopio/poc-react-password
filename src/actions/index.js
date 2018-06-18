@@ -8,6 +8,7 @@ export const KEYWORD_FIND_ONE = 'KEYWORD_FIND_ONE'
 export const KEYWORD_DELETE = 'KEYWORD_DELETE'
 export const KEYWORD_UPDATE = 'KEYWORD_UPDATE'
 export const KEYWORDS_BY_NAME = 'KEYWORDS_BY_NAME'
+export const FOLDER_CREATE = 'FOLDER_CREATE'
 
 export function keywordsList() {
     const url = `${URL}/list`
@@ -59,6 +60,15 @@ export function keywordFindByName(name) {
     const request = axios.get(url)
     return {
         type: KEYWORDS_BY_NAME,
+        payload: request
+    }
+}
+
+export function folderCreate(values, callback) {
+    const url = `${URL}/folder/add`
+    const request = axios.post(url, values).then(() => callback())
+    return {
+        type: FOLDER_CREATE,
         payload: request
     }
 }
