@@ -25,6 +25,7 @@ class KeywordsList extends Component {
                 <tr key={keyword._id}>
                     <td><Link to={`/keyword/show/${keyword._id}`}>{keyword.name}</Link></td>
                     <td>{keyword.password}</td>
+                    <td>{keyword.folder}</td>
                     <td>
                         <div className="btn-group" role="group">
                           <Link className="btn btn-info btn-sm" role="button" to={`/keyword/edit/${keyword._id}`}>edit</Link>
@@ -47,6 +48,7 @@ class KeywordsList extends Component {
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Password</th>
+                    <th scope="col">Folder</th>
                     <th scope="col"></th>
                 </tr>
                 </thead>

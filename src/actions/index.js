@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-const URL = 'http://192.168.1.101:5000'
+// const URL = 'http://192.168.1.101:5000'
+const URL = 'http://localhost:5000'
 
 export const KEYWORDS_LIST = 'KEYWORDS_LIST'
 export const KEYWORD_CREATE = 'KEYWORD_CREATE'
@@ -9,6 +10,7 @@ export const KEYWORD_DELETE = 'KEYWORD_DELETE'
 export const KEYWORD_UPDATE = 'KEYWORD_UPDATE'
 export const KEYWORDS_BY_NAME = 'KEYWORDS_BY_NAME'
 export const FOLDER_CREATE = 'FOLDER_CREATE'
+export const FOLDERS_LIST = 'FOLDERS_LIST'
 
 export function keywordsList() {
     const url = `${URL}/list`
@@ -69,6 +71,15 @@ export function folderCreate(values, callback) {
     const request = axios.post(url, values).then(() => callback())
     return {
         type: FOLDER_CREATE,
+        payload: request
+    }
+}
+
+export function foldersList() {
+    const url = `${URL}/folder/list`
+    const request = axios.get(url)
+    return {
+        type: FOLDERS_LIST,
         payload: request
     }
 }

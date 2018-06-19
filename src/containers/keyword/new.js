@@ -3,6 +3,7 @@ import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { keywordCreate } from '../../actions'
+import FolderSelect from '../helper/select-folder'
 
 class KeywordNew extends Component {
     RenderField(field) {
@@ -22,12 +23,31 @@ class KeywordNew extends Component {
         )
     }
 
+    RenderSelect(field) {
+        const { meta : {touched, error }} = field
+        const classRoleName = `${touched && error ? 'is-invalid' : ''}`
+        const classFeedbackName = `${touched && error ? 'invalid-feedback' : ''}`
+        return (
+            <div className="form-group row">
+                <label className="col-sm-2 col-form-label">{field.label}</label>
+                <div className="col-sm-10">
+                    <select className={`form-control ${classRoleName}`} {...field.input}>
+                        <FolderSelect />
+                    </select>
+                    <div className={classFeedbackName}>
+                       {touched ? error : ''}
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
     onSubmitForm(values) {
         this.props.keywordCreate(values, () => {
             this.props.history.push('/')
         })
     }
-
+    
     render() {
         const { handleSubmit } = this.props
         return (
@@ -38,6 +58,7 @@ class KeywordNew extends Component {
                 <form onSubmit={handleSubmit(this.onSubmitForm.bind(this))}>
                     <Field label="Name" name="name" component={this.RenderField} />
                     <Field label="Password" name="password" component={this.RenderField} />
+                    <Field label="Folder" name="folder" component={this.RenderSelect} />
                     <button type="submit" className="btn btn-primary btn-block">Save</button>
                     <Link className="btn btn-secondary btn-block" role="button" to="/">Cancel</Link>
                 </form>
@@ -55,6 +76,10 @@ function validate(values) {
 
     if (!values.password) {
         errors.password = "Enter with a password"
+    }
+
+    if (!values.folder) {
+        errors.folder = "Select a folder"
     }
 
     return errors

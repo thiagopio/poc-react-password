@@ -12,8 +12,9 @@ class KeywordShow extends Component {
     render() {
         return (
             <div>
-                <h1 className="display-4">{this.props.keyword.name}</h1>
-                <h1 className="display-4">{this.props.keyword.password}</h1>
+                <h1 className="display-4"><small>ID</small>: {this.props.keyword.name}</h1>
+                <h1 className="display-4"><small>PWD</small>: {this.props.keyword.password}</h1>
+                <h1 className="display-4"><small>PATH</small>: {this.props.keyword.folder}</h1>
             </div>
         )
     }
