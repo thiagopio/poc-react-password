@@ -1,9 +1,9 @@
 import _ from 'lodash'
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { keywordFindByName, keywordsList } from "../../actions"
+import { searchByName, keywordsList } from "../../actions"
 
-class KeywordSearch extends Component {
+class SearchInput extends Component {
     constructor(props) {
         super(props)
         this.state = { term: '' }
@@ -20,7 +20,7 @@ class KeywordSearch extends Component {
         if (_.isEmpty(term)) {
             this.props.keywordsList()
         } else {
-            this.props.keywordFindByName(this.state.term)
+            this.props.searchByName(this.state.term)
         }
     }
 
@@ -45,4 +45,4 @@ function mapStateToProps( { keywords } ) {
     return { keywords }
 }
 
-export default connect(mapStateToProps, { keywordFindByName, keywordsList })(KeywordSearch)
+export default connect(mapStateToProps, { searchByName, keywordsList })(SearchInput)

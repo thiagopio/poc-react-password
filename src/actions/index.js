@@ -68,8 +68,8 @@ export function keywordUpdate(values, callback) {
     }
 }
 
-export function keywordFindByName(name) {
-    const url = `${URL}/search/${name}`
+export function searchByName(name) {
+    const url = `${URL}/tree/search/${name}`
     const request = axios.get(url)
     return {
         type: KEYWORDS_BY_NAME,

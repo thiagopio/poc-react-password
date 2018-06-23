@@ -1,11 +1,11 @@
 import React from 'react'
 import KeywordsList from './list'
-import KeywordSearch from './search'
+import SearchInput from '../helper/search-input'
 
 const KeywordsIndex = (props) => {
     return (
         <div>
-            <KeywordSearch />
+            <SearchInput />
             <KeywordsList currentFolder={props.match.params.folder} />
         </div>
     )
