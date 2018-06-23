@@ -2,11 +2,11 @@ import React from 'react'
 import KeywordsList from './list'
 import KeywordSearch from './search'
 
-const KeywordsIndex = () => {
+const KeywordsIndex = (props) => {
     return (
         <div>
             <KeywordSearch />
-            <KeywordsList />
+            <KeywordsList currentFolder={props.match.params.folder} />
         </div>
     )
 }
