@@ -84,7 +84,7 @@ class KeywordsList extends Component {
                     <tr>
                         <th scope="col">Name</th>
                         <th scope="col">Type</th>
-                        <th scope="col">Folder</th>
+                        <th scope="col">Parent</th>
                         <th scope="col"></th>
                     </tr>
                     </thead>

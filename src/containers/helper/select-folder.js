@@ -11,7 +11,7 @@ class FolderSelect extends Component {
     }
     
     loadOptions() {
-        const folders = [{_id: 0, name: 'nenhuma'}, ...this.props.folders]
+        const folders = [{_id: '', name: 'nenhuma'}, ...this.props.folders]
         return _.map(folders, folder => {
             return (
                 <option key={folder._id} value={folder._id}>{folder.name.toUpperCase()}</option>

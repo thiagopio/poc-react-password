@@ -3,8 +3,13 @@ import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { folderCreate } from '../../actions'
+import FolderSelect from '../helper/select-folder'
 
 class FolderNew extends Component {
+    constructor(props) {
+        super(props)
+    }
+
     RenderField(field) {
         const { meta : {touched, error }} = field
         const classRoleName = `${touched && error ? 'is-invalid' : ''}`
@@ -14,6 +19,25 @@ class FolderNew extends Component {
                 <label className="col-sm-2 col-form-label">{field.label}</label>
                 <div className="col-sm-10">
                     <input type="text" className={`form-control ${classRoleName}`} {...field.input} />
+                    <div className={classFeedbackName}>
+                       {touched ? error : ''}
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+    RenderSelect(field) {
+        const { meta : {touched, error }} = field
+        const classRoleName = `${touched && error ? 'is-invalid' : ''}`
+        const classFeedbackName = `${touched && error ? 'invalid-feedback' : ''}`
+        return (
+            <div className="form-group row">
+                <label className="col-sm-2 col-form-label">{field.label}</label>
+                <div className="col-sm-10">
+                    <select className={`form-control ${classRoleName}`} {...field.input}>
+                        <FolderSelect />
+                    </select>
                     <div className={classFeedbackName}>
                        {touched ? error : ''}
                     </div>
@@ -35,6 +59,7 @@ class FolderNew extends Component {
                 <h4>Add Folder</h4>
                 <form onSubmit={handleSubmit(this.onSubmitForm.bind(this))}>
                     <Field label="Name" name="name" component={this.RenderField} />
+                    <Field label="Folder" name="folder" component={this.RenderSelect} />
                     <button type="submit" className="btn btn-primary btn-block">Save</button>
                     <Link className="btn btn-secondary btn-block" role="button" to="/">Cancel</Link>
                 </form>

@@ -12,6 +12,7 @@ class KeywordEdit extends Component {
         super(props)
         this.state = {...props, initial: true}
     }
+
     componentDidMount() {
         const id = this.props.match.params.id
         this.props.keywordFindByID(id)
@@ -67,7 +68,7 @@ class KeywordEdit extends Component {
     }
 
     render() {
-        const { handleSubmit, keywords } = this.props
+        const { handleSubmit } = this.props
         return (
             <div>
                 <h4>

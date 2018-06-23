@@ -6,6 +6,10 @@ import { keywordCreate } from '../../actions'
 import FolderSelect from '../helper/select-folder'
 
 class KeywordNew extends Component {
+    constructor(props) {
+        super(props)
+    }
+
     RenderField(field) {
         const { meta : {touched, error }} = field
         const classRoleName = `${touched && error ? 'is-invalid' : ''}`
@@ -76,10 +80,6 @@ function validate(values) {
 
     if (!values.password) {
         errors.password = "Enter with a password"
-    }
-
-    if (!values.folder) {
-        errors.folder = "Select a folder"
     }
 
     return errors
