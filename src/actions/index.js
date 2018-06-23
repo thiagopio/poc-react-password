@@ -9,14 +9,25 @@ export const KEYWORD_FIND_ONE = 'KEYWORD_FIND_ONE'
 export const KEYWORD_DELETE = 'KEYWORD_DELETE'
 export const KEYWORD_UPDATE = 'KEYWORD_UPDATE'
 export const KEYWORDS_BY_NAME = 'KEYWORDS_BY_NAME'
+export const KEYWORDS_BY_FOLDER = 'KEYWORDS_BY_FOLDER'
 export const FOLDER_CREATE = 'FOLDER_CREATE'
 export const FOLDERS_LIST = 'FOLDERS_LIST'
+export const FOLDER_PATH = 'FOLDER_PATH'
+export const FOLDER_BAR = 'FOLDER_baR'
 
 export function keywordsList() {
-    const url = `${URL}/list`
+    const url = `${URL}/tree`
     const request = axios.get(url)
     return {
         type: KEYWORDS_LIST,
+        payload: request
+    }
+}
+export function keywordsListByFolder(folderId) {
+    const url = `${URL}/tree/byfolder/${folderId}`
+    const request = axios.get(url)
+    return {
+        type: KEYWORDS_BY_FOLDER,
         payload: request
     }
 }
@@ -80,6 +91,15 @@ export function foldersList() {
     const request = axios.get(url)
     return {
         type: FOLDERS_LIST,
+        payload: request
+    }
+}
+
+export function folderBar(current_folder) {
+    const url = `${URL}/folder/bar/${current_folder}`
+    const request = axios.get(url)
+    return {
+        type: FOLDER_BAR,
         payload: request
     }
 }

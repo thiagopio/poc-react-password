@@ -24,11 +24,12 @@ ReactDOM.render(
         <div className="container">
           <Switch>
             <Route exact path="/" component={KeywordsIndex} />
+            <Route path="/go/:folder" component={KeywordsIndex} />
             <Route path="/folder/new" component={FolderNew} />
             <Route path="/keyword/new" component={KeywordNew} />
             <Route path="/keyword/edit/:id" component={keywordEdit} />
             <Route path="/keyword/show/:id" component={keywordShow} />
-            <Route path='*' component={KeywordsIndex} />
+            {/* <Route path='*' component={KeywordsIndex} /> */}
           </Switch>
         </div>
       </div>

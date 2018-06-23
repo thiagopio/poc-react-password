@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const MenuBar = () => {
+export default function Menubar() {
     return (
         <nav className="site-header sticky-top py-1" style={{backgroundColor: ""}}>
             <div className="container d-flex flex-column flex-md-row justify-content-between">
@@ -12,5 +12,3 @@ const MenuBar = () => {
         </nav>
     )
 }
-
-export default MenuBar
