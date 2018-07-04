@@ -10,7 +10,6 @@ import FolderBar from '../folder/bar'
 class KeywordsList extends Component {
 
     componentDidMount() {
-        // console.log('[KeywordsList] mount', this.props.currentFolder)
         const folder_id = this.props.currentFolder
         if (!folder_id || folder_id == 'undefined') {
             this.props.keywordsList()
@@ -28,13 +27,11 @@ class KeywordsList extends Component {
     }
 
     onClickLoad(id) {
-        // console.log('[KeywordsList] onClickLoad')
         this.props.folderBar(id)
         this.props.keywordsListByFolder(id)
     }
 
     callbackBar(id) {
-        // console.log('[KeywordsList] callbackBar', id)
         if (id == 'undefined') {
             this.props.keywordsList()
         } else {
