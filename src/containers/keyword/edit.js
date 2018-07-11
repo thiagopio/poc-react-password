@@ -8,6 +8,7 @@ import FolderSelect from '../helper/select-folder'
 
 
 class KeywordEdit extends Component {
+    
     constructor(props) {
         super(props)
         this.state = {...props, initial: true}

@@ -13,7 +13,7 @@ export const KEYWORDS_BY_FOLDER = 'KEYWORDS_BY_FOLDER'
 export const FOLDER_CREATE = 'FOLDER_CREATE'
 export const FOLDERS_LIST = 'FOLDERS_LIST'
 export const FOLDER_PATH = 'FOLDER_PATH'
-export const FOLDER_BAR = 'FOLDER_baR'
+export const FOLDER_BAR = 'FOLDER_BAR'
 
 export function keywordsList() {
     const url = `${URL}/tree`

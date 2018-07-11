@@ -26,9 +26,11 @@ class KeywordsList extends Component {
         }
     }
 
-    onClickLoad(id) {
-        this.props.folderBar(id)
-        this.props.keywordsListByFolder(id)
+    onClickLoad(obj) {
+        if (obj.type == "folder") {
+            this.props.folderBar(obj._id)
+            this.props.keywordsListByFolder(obj._id)
+        }
     }
 
     callbackBar(id) {
@@ -59,7 +61,7 @@ class KeywordsList extends Component {
         return _.map(this.props.keywords, keyword => {
             return (
                 <tr key={keyword._id}>
-                    <td><Link to={this.verifyLink(keyword)} onClick={this.onClickLoad.bind(this, keyword._id)}>{keyword.name}</Link></td>
+                    <td><Link to={this.verifyLink(keyword)} onClick={this.onClickLoad.bind(this, keyword)}>{keyword.name}</Link></td>
                     <td>{keyword.type}</td>
                     <td>{keyword.folder}</td>
                     <td>{this.verifyOptions(keyword)}</td>
